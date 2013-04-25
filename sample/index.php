@@ -1,7 +1,9 @@
 <?php defined('_JEXEC') or die; 
 
 	// Get the Application
-	$app = JFactory::getApplication();
+	$app 		= JFactory::getApplication();
+	$doc 		= JFactory::getDocument();
+	$navcolor	= $this->params->get('navcolor');
 	
 	// Determine main content width
 	if($this->countModules('left') && $this->countModules('right')) {
@@ -18,12 +20,18 @@
 	<head>
 		<jdoc:include type="head" />
 		<?php JHtmlBootstrap::loadCss($includeMaincss = true); ?>
+		<?php $doc->addStyleSheet(JURI::base() . 'templates/' . $this->template . '/css/template.css', $type = 'text/css', $media = 'screen,projection'); ?>
 	</head>
 
 	<body>
 		<navigation>
-			<div class="navbar navbar-fixed-top">
+			<div class="navbar navbar-fixed-top <?php echo $navcolor == 'inverse' ? 'navbar-inverse' : ''; ?>">
 					<div class="navbar-inner">
+						<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			            	<span class="icon-bar"></span>
+			            	<span class="icon-bar"></span>
+			            	<span class="icon-bar"></span>
+			          	</button>
 					<div class="container-fluid">
 						<a class="brand" href="#"><?php echo $app->getCfg('sitename'); ?></a>
 						<div class="nav-collapse">

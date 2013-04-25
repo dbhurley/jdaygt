@@ -16,6 +16,7 @@
 	<files>
 		<filename>index.php</filename>
 		<filename>templateDetails.xml</filename>
+		<folder>css</folder>
 	</files>
 	<positions>
 		<position>top</position>
@@ -26,4 +27,18 @@
 		<position>right</position>
     	<position>footer</position>
 	</positions>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="navcolor" type="list" default="center"
+					label="Navigation Color"
+					description="Choose Bootstrap Default or Inverse"
+					filter="word"
+				>
+					<option value="default">Default</option>
+					<option value="inverse">Inverse</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
 </extension>
