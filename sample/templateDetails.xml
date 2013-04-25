@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.0" type="template" client="site">
+	<name>Sample Template</name>
+	<creationDate>2013-04-24</creationDate>
+	<author>David Hurley</author>
+	<authorEmail>david@mydomain.com</authorEmail>
+	<authorUrl>http://mydomain.com</authorUrl>
+	<copyright>Copyright (C) 2012 My Site</copyright>
+	<version>1.0</version>
+	<description>
+		<![CDATA[
+    		<p>Creating a sample template for JD13GT<p>
+		]]>
+	</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+	<positions>
+		<position>top</position>
+		<position>breadcrumbs</position>
+		<position>footer</position>
+		<position>left</position>
+		<position>right</position>
+    	<position>footer</position>
+	</positions>
+</extension>
