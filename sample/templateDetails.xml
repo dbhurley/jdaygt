@@ -20,6 +20,7 @@
 	<positions>
 		<position>top</position>
 		<position>breadcrumbs</position>
+		<position>header</position>
 		<position>footer</position>
 		<position>left</position>
 		<position>right</position>

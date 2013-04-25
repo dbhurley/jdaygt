@@ -1,16 +1,81 @@
-<?php defined('_JEXEC') or die; ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php defined('_JEXEC') or die; 
 
+	// Get the Application
+	$app = JFactory::getApplication();
+	
+	// Determine main content width
+	if($this->countModules('left') && $this->countModules('right')) {
+		$mainWidth = 'span4';
+	} else if($this->countModules('left') || $this->countModules('right')) {
+		$mainWidth = 'span8';
+	} else {
+		$mainWidth = 'span12';
+	}
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
 	<head>
 		<jdoc:include type="head" />
+		<?php JHtmlBootstrap::loadCss($includeMaincss = true); ?>
 	</head>
+
 	<body>
-		<jdoc:include type="modules" name="top" style="xhtml" />    
-		<jdoc:include type="modules" name="breadcrumbs" style="xhtml" />
-		<jdoc:include type="modules" name="left" style="xhtml" />
-		<jdoc:include type="component" />
-		<jdoc:include type="modules" name="right" style="xhtml" />
-		<jdoc:include type="modules" name="footer" style="none" />    
+		<navigation>
+			<div class="navbar navbar-fixed-top">
+					<div class="navbar-inner">
+					<div class="container-fluid">
+						<a class="brand" href="#"><?php echo $app->getCfg('sitename'); ?></a>
+						<div class="nav-collapse">
+							<jdoc:include type="modules" name="top" style="xhtml" />    
+						</div>
+					</div>
+				</div>
+			</div>
+		</navigation>
+
+		<?php if($this->countModules('header')) { ?>
+			<header id="header">
+				<div class="container-fluid">
+  					<div class="row-fluid">
+  						<div class="span12">
+							<div class="hero-unit">
+								<jdoc:include type="modules" name="header" style="none" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+		<?php } ?>
+
+		<div class="container-fluid">
+  			<div id="breadcrumbs" class="row-fluid">
+				<jdoc:include type="modules" name="breadcrumbs" style="none" />
+			</div>
+		</div>
+
+		<div class="container-fluid">
+  			<div class="row-fluid">
+				<?php if($this->countModules('left')) { ?>
+				<div class="span4">
+					<jdoc:include type="modules" name="left" style="xhtml" />
+				</div>
+				<?php } ?>
+			
+				<div class="<?php echo $mainWidth; ?>">
+					<jdoc:include type="component" />
+				</div>
+				
+				<?php if($this->countModules('right')) { ?>
+					<div class="span4">
+						<jdoc:include type="modules" name="right" style="xhtml" />
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+		
+		<footer>
+			<jdoc:include type="modules" name="footer" style="none" />    
+		</footer>
 	</body>
 </html>
